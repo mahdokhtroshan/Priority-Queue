@@ -17,7 +17,7 @@ class PriorityQueue:
     def Add(self, name , age , skill):
         person = Person(name, age, skill)
         self.queue.append(person)
-        self.queue.sort(key= lambda x: x.skill)
+        
         
 
     def BestPerson(self):
@@ -32,10 +32,10 @@ class PriorityQueue:
     def Update(self, person, newskill):
         for x in self.queue:
             if x == person:
-                x.skill = newskill
-                self.queue.sort(key=lambda x : x.skill)
+                x.skill = newskill  
             break
-                 
+    
+        
              
 
 
@@ -52,17 +52,19 @@ while True:
             name = input("Enter the person's name : ")
             age = int(input("Enter the person's age :"))
             skill = input("Enter the person's skill: ") 
-            person = Person(name, age, skill)
             queue.Add(name, age, skill)
-            
+            print()
         
-        #elif choice == 2:
-           #bestperson = queue.Pop()
-           #print("The best person is :")
-        #elif choice == 3:
-            
-            
-        #elif choice == 4:
-            #break
-        #else:
-            #print("Please try again{bestperson.name} + {bestperson.age} + {bestperson.skill}")
+        elif choice == 2:
+           bestperson = queue.BestPerson()
+           print("The best person is {bestperson.name},{bestperson.age},{bestperson.skill}")
+           print()
+        elif choice == 3:
+            name = input("Enter the person's name : ")
+            newskill = input("Enter the person's newskill: ")
+            queue.Update(name, newskill)
+            print()
+        elif choice == 4:
+            break
+        else:
+            print("Invalid Request")
